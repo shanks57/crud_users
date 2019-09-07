@@ -1,8 +1,9 @@
 <?php 
 include 'koneksi.php';
-$judul = $_POST['judul'];
-$isi = $_POST['isi'];
+$nama = $_POST['nama'];
+$telpon = $_POST['telpon'];
+$email = $_POST['email'];
  
-mysqli_query($host,"INSERT INTO note(judul,isi) VALUES('$judul','$isi')");
+mysqli_query($host,"INSERT INTO users(nama,telpon,email) VALUES('$nama','$telpon','$email')");
 header("location:index.php?pesan=input");
 ?>

@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Membuat CRUD Dengan PHP Dan MySQL - Menampilkan data dari database</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<div class="judul">		
-		<h1>Membuat CRUD Dengan PHP Dan MySQL</h1>
-		<h2>Menampilkan data dari database</h2>
-		<h3>www.malasngoding.com</h3>
-	</div>
-	
-	<br/>
-	
-	<a href="index.php">Lihat Semua Data</a>
- 
-	<br/>
-	<h3>Edit data</h3>
- 
-	<?php 
+
+	<head>
+		<title>Membuat CRUD Dengan PHP Dan MySQL - Menampilkan data dari database</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	</head>
+
+	<body>
+
+
+
+
+		<?php 
 	include "koneksi.php";
 	$id = $_GET['id'];
-	$query_mysql = mysqli_query($host,"SELECT * FROM note WHERE id='$id'")or die(mysql_error());
+	$query_mysql = mysqli_query($host,"SELECT * FROM users WHERE id='$id'")or die(mysql_error());
 	$nomor = 1;
 	while($data = mysqli_fetch_array($query_mysql)){
 	?>
-	<form action="update.php" method="post">		
-		<table>
-			<tr>
-				<td>Judul</td>
-				<td>
-					<input type="hidden" name="id" value="<?php echo $data['id'] ?>">
-					<input type="text" name="judul" value="<?php echo $data['judul'] ?>">
-				</td>					
-			</tr>	
-			<tr>
-				<td>Isi</td>
-				<td><input type="text" name="isi" value="<?php echo $data['isi'] ?>"></td>					
-			</tr>		
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Simpan"></td>					
-			</tr>				
-		</table>
-	</form>
-	<?php } ?>
-</body>
+
+		<div class="container text-center p-5 bg-light my-5">
+			<a class="btn btn-outline-info" href="index.php">Lihat Semua Data</a>
+			<h3 class="my-4">Input data baru</h3>
+			<form class="" action="update.php" method="post">
+				<input type="hidden" name="id" value="<?php echo $data['id'] ?>">
+
+				<td>Nama</td>
+				<td><input class="form-control w-50 mx-auto" value="<?php echo $data['nama'] ?>" type="text"
+						name="nama"></td>
+
+				<td>Telpon</td>
+				<td><input class="form-control w-50 mx-auto" value="<?php echo $data['telpon'] ?>" type="text"
+						name="telpon"></td>
+
+				<td>Email</td>
+				<td><input class="form-control w-50 mx-auto" value="<?php echo $data['email'] ?>" type="text"
+						name="email"></td>
+
+
+				<input class="my-4 btn btn-outline-warning" type="submit" value="Simpan">
+
+			</form>
+		</div>
+
+		<?php } ?>
+	</body>
+
 </html>

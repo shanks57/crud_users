@@ -3,6 +3,6 @@
 $host = mysqli_connect("localhost","root","");
  
 // isikan dengan nama database yang akan di hubungkan
-$db = mysqli_select_db($host,"note_crud");
+$db = mysqli_select_db($host,"user");
  
 ?>
